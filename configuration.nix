@@ -60,8 +60,8 @@
 
   services.xserver = {
     enable = true; # Required for X11 layout configuration
-    xkb.layout = "us";
-    xkb.variant = "altgr-intl";
+    xkb.layout = "ch";
+    xkb.variant = "de_nodeadkeys";
   };
 
   hardware.graphics = {
@@ -105,19 +105,16 @@
 
   time.timeZone = "America/Asuncion";
   i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocales = [ "ja_JP.UTF-8/UTF-8" ];
+    defaultLocale = "de_CH.UTF-8";
   };
 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  programs.kdeconnect.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
-  users.users.fumo = {
+  users.users.pasc = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
     packages = with pkgs; [
 
     ];
@@ -132,15 +129,16 @@
     file
     sbctl
     dnsmasq
+    docker-compose
     gnupg
     waypipe
     unstable.brave
+    unstable.google-chrome
     unstable.antigravity-fhs
     _7zz
     unrar
     fastfetch
     thunderbird
-    kdePackages.kamoso
     mpv
     appimage-run
     mangohud
@@ -150,16 +148,6 @@
     ethtool
     pciutils
     mesa-demos
-    unstable.renpy
-    (pkgs.unstable.heroic.override {
-      extraPkgs = p: [
-        pkgs.unstable.gamescope
-        pkgs.unstable.gamemode
-      ];
-    })
-    unstable.haskellPackages.misfortune
-    unstable.cowsay
-    unstable.lolcat
   ];
 
   programs.direnv = {
@@ -173,30 +161,14 @@
 
   programs.firefox.enable = true;
 
-  programs.gamescope.enable = true;
-  programs.gamemode.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    gamescopeSession.enable = true;
-  };
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
-    "io.gitlab.librewolf-community"
-    "org.garudalinux.firedragon"
     "com.usebottles.bottles"
     "org.qbittorrent.qBittorrent"
     "com.github.tchx84.Flatseal"
     "com.discordapp.Discord"
-    "com.protonvpn.www"
-    "com.stremio.Stremio"
-    "com.vysp3r.ProtonPlus"
-    "net.retrodeck.retrodeck"
-    "org.vinegarhq.Sober"
     "com.obsproject.Studio"
-    "website.i2pd.i2pd"
   ];
   # Dynamically linked executables
   programs.nix-ld.enable = true;
@@ -232,11 +204,10 @@
         vhostUserPackages = with pkgs; [ virtiofsd ];
       };
     };
-    podman = {
-      enable = true;
-      dockerCompat = true; # Aliases docker -> podman
-      defaultNetwork.settings.dns_enabled = true;
-    };
+  virtualisation.docker = {
+    enable = true;
+    # Optionally expose the Docker socket to users
+    enableOnBoot = true;
   };
   programs.virt-manager.enable = true;
   services.spice-vdagentd.enable = true; # Clipboard sharing with VMs
