@@ -148,6 +148,7 @@
     ethtool
     pciutils
     mesa-demos
+    warp
   ];
 
   programs.direnv = {
