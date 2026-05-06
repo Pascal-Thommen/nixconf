@@ -23,7 +23,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.fumo = import ./home.nix;
+            users.pasc = import ./home.nix;
             extraSpecialArgs = { inherit inputs; }; # Also pass to Home Manager
             backupFileExtension = "backup";
           };
