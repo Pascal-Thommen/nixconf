@@ -150,6 +150,9 @@
     mesa-demos
     warp
     obsidian
+    remnote
+    zapzap
+    nextcloud-client
 
   ];
 
