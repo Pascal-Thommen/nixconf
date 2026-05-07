@@ -36,4 +36,22 @@
       plugins = [ "git" "sudo" ];
     };
   };
+
+
+programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "ssh.thommen.work" = {
+        proxyCommand = "cloudflared access ssh --hostname %h";
+        extraOptions = {
+          "ServerAliveInterval" = "60";
+          "ServerAliveCountMax" = "10";
+        };
+      };
+    };
+  };
 }
+
+
+
+
