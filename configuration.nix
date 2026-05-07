@@ -149,6 +149,8 @@
     pciutils
     mesa-demos
     warp
+    obsidian
+
   ];
 
   programs.direnv = {
