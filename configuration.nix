@@ -17,9 +17,8 @@
 
   boot.loader.limine.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.unstable.linuxPackages_xanmod_latest;
-  boot.kernelModules = [ "ntsync" ];
-
+  boot.kernelPackages = pkgs.linuxPackages;                                        
+  boot.kernelModules = [ "ntsync" ];                                                
   boot.kernel.sysctl = {
     "vm.max_map_count" = 2147483642; # SteamOS default
   };
@@ -149,10 +148,10 @@
     pciutils
     mesa-demos
     warp
-    obsidian
     remnote
     zapzap
     nextcloud-client
+    cloudflared
 
   ];
 
@@ -167,6 +166,7 @@
 
   programs.firefox.enable = true;
 
+  services.cloudflare-warp.enable = true;
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
@@ -175,6 +175,8 @@
     "com.github.tchx84.Flatseal"
     "com.discordapp.Discord"
     "com.obsproject.Studio"
+    "md.obsidian.Obsidian"
+    "org.onlyoffice.desktopeditors"
   ];
   # Dynamically linked executables
   programs.nix-ld.enable = true;
