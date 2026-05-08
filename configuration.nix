@@ -152,7 +152,7 @@
     zapzap
     nextcloud-client
     cloudflared
-
+    cowsay
   ];
 
   programs.direnv = {
@@ -212,10 +212,11 @@
         vhostUserPackages = with pkgs; [ virtiofsd ];
       };
     };
-  virtualisation.docker = {
-    enable = true;
-    # Optionally expose the Docker socket to users
-    enableOnBoot = true;
+    docker = {
+      enable = true;
+      # Optionally expose the Docker socket to users
+      enableOnBoot = true;
+    };
   };
   programs.virt-manager.enable = true;
   services.spice-vdagentd.enable = true; # Clipboard sharing with VMs

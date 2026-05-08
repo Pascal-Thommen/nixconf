@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.plasma-manager.homeModules.plasma-manager
+    
   ];
 
   home.username = "pasc";
