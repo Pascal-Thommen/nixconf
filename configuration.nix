@@ -147,7 +147,7 @@
     ethtool
     pciutils
     mesa-demos
-    warp
+    cloudflare-warp
     remnote
     zapzap
     nextcloud-client
