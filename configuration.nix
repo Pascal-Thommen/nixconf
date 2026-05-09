@@ -104,7 +104,7 @@
 
   time.timeZone = "America/Asuncion";
   i18n = {
-    defaultLocale = "de_CH.UTF-8";
+    defaultLocale = "en_US.UTF-8";
   };
 
   services.displayManager.gdm.enable = true;
@@ -147,12 +147,12 @@
     ethtool
     pciutils
     mesa-demos
-    cloudflare-warp
     remnote
     zapzap
     nextcloud-client
     cloudflared
     cowsay
+    telegram-desktop
   ];
 
   programs.direnv = {
