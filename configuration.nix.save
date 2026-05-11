@@ -148,12 +148,11 @@
     pciutils
     mesa-demos
     remnote
-    zapzap
+    unstable.zapzap
     nextcloud-client
     cloudflared
     cowsay
     telegram-desktop
-    copyq
   ];
 
   programs.direnv = {
@@ -167,9 +166,7 @@
 
   programs.firefox.enable = true;
 
-  services.cloudflare-warp = {
-    enable = true;
-  };   
+  services.cloudflare-warp.enable = true;
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
@@ -229,8 +226,4 @@
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.11";
 
-  #Autostart
-  services.xserver.displayManager.sessionCommands = ''
-  ${pkgs.copyq}/bin/copyq &
-  '';   
 }
